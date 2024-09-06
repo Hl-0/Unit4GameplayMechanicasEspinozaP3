@@ -45,12 +45,12 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy")&& hasPowerup)
         {
-            Rigidbody enemyRigidbody =gameObject.GetComponent<Rigidbody>();
-            Vector3 awayFromPPlayer = (collision.gameObject.transform.position - transform.position);
+            Rigidbody enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            Vector3 awayFromPlayer = (collision.gameObject.transform.position - transform.position);
 
-            if (collision.gameObject.CompareTag("Enemy")&& hasPowerup)
+            if (collision.gameObject.CompareTag("Enemy") && hasPowerup)
                 Debug.Log("Collided with " + collision.gameObject.name + " with powerup set to " + hasPowerup);
-            enemyRigidbody.AddForce(awayFromPPlayer * powerupStrength, ForceMode.Impulse);
+            enemyRigidbody.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
         }
     }
 }
