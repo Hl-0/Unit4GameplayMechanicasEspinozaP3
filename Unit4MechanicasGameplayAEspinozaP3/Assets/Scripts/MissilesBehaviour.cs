@@ -1,21 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UnityEngine;
 
-public class RocketBehaviour : MonoBehaviour
+
+public class MissilesBehavior : MonoBehaviour
 {
-
-    Transform target;
-    float speed = 15.0f;
-    bool homing;
-    float rocketStrength = 15.0f;
-    float aliveTimer = 5.0f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Transform target;
+    private float speed = 15.0f;
+    private bool homing;
+    private float rocketStrength = 15.0f;
+    private float aliveTimer = 5.0f;
 
     // Update is called once per frame
     void Update()
@@ -26,7 +21,6 @@ public class RocketBehaviour : MonoBehaviour
             transform.position += moveDirection * speed * Time.deltaTime;
             transform.LookAt(target);
         }
-
     }
     public void Fire(Transform newTarget)
     {
@@ -34,7 +28,7 @@ public class RocketBehaviour : MonoBehaviour
         homing = true;
         Destroy(gameObject, aliveTimer);
     }
-    void OnCollisionEnter(Collision col)
+    private void OnCollisionEnter(Collision col)
     {
         if (target != null)
         {

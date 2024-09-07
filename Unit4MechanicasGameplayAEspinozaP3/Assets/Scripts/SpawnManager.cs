@@ -4,51 +4,54 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject[] enemyPrefabs;
-    private float spawnRangeZ = 9.0f;
-    private float spawnRangeX = 9.0f;
-    private float spawnRangeY = 0.0f;
+    public GameObject[] powerupPrefabs;
+    public GameObject[] enemyPrefab;
+    private float spawnRange = 9.0f;
     public int enemyCount;
-    public int waveNumber = 3;
-    public GameObject[] powerupPrefab;
+    public int waveNumber = 1;
+    public GameObject powerupPrefab;
     // Start is called before the first frame update
     void Start()
     {
-        SpawnEnemyWave(waveNumber);
         int randomPowerup = Random.Range(0, powerupPrefabs.Length);
+        SpawnEnemyWave(waveNumber);
         Instantiate(powerupPrefabs[randomPowerup], GenerateSpawnPosition(), powerupPrefabs[randomPowerup].transform.rotation);
 
     }
 
     // Update is called once per frame
+
+
+
+    void Update()
+    {
+        enemyCount = FindObjectsOfType<Enemy>().Length;
+
+        if (enemyCount == 0)
+        {
+            waveNumber++;
+            SpawnEnemyWave(waveNumber);
+            int randomPowerup = Random.Range(0, powerupPrefabs.Length);
+            Instantiate(powerupPrefabs[randomPowerup], GenerateSpawnPosition(), powerupPrefabs[randomPowerup].transform.rotation);
+
+        }
+    }
+
+
     private Vector3 GenerateSpawnPosition()
     {
-        float spawnPosY = Random.Range(-spawnRangeY, spawnRangeY);
-        float spawnPosX = Random.Range(-spawnRangeX, spawnRangeX);
-        float spawnPosZ = Random.Range(-spawnRangeZ, spawnRangeZ);
-        Vector3 randomPos = new Vector3(spawnPosX,0 , spawnPosZ);
+        float spawnPosX = Random.Range(-spawnRange, spawnRange);
+        float spawnPosZ = Random.Range(-spawnRange, spawnRange);
+        Vector3 randomPos = new Vector3(spawnPosX, 0, spawnPosZ);
         return randomPos;
     }
     void SpawnEnemyWave(int enemiesToSpawn)
     {
         for (int i = 0; i < enemiesToSpawn; i++)
         {
-            int randomEnemy = Random.Range(0, enemyPrefabs.Length);
-
-            Instantiate(enemyPrefabs[randomEnemy], GenerateSpawnPosition(), enemyPrefabs[randomEnemy].transform.rotation);
-        }
-    }
-    void Update()
-    {
-        enemyCount = FindObjectsOfType<Enemy>().Length;
-
-        if(enemyCount == 0)
-        {
-            waveNumber++;
-            SpawnEnemyWave(waveNumber);
-            int randomPowerup = Random.Range(0, powerupPrefabs.Length);
-            Instantiate(powerupPrefabs[randomPowerup], GenerateSpawnPosition(),powerupPrefabs[randomPowerup].transform.rotation);
-
+            int randomEnemy = Random.Range(0, enemyPrefab.Length);
+            Instantiate(enemyPrefab[randomEnemy], GenerateSpawnPosition(), enemyPrefab[randomEnemy].transform.rotation);
         }
     }
 }
+
