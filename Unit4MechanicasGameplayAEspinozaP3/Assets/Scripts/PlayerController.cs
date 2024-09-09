@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
     public float speed = 5.0f;
     public bool hasPowerup;
-    private float powerupStrength = 15.0f;
+    private float powerupStrength = 100.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
         foreach (var enemy in FindObjectsOfType<Enemy>())
         {
             tmpRocket = Instantiate(rocketPrefab, transform.position + Vector3.up, Quaternion.identity);
-            tmpRocket.GetComponent<MissilesBehaviour>().Fire(enemy.transform);
+            tmpRocket.GetComponent<RocketBehaviour>().Fire(enemy.transform);
         }
     }
     IEnumerator Smash()

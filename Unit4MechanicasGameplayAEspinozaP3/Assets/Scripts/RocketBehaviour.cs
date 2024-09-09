@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 using UnityEngine;
 
 
-public class MissilesBehavior : MonoBehaviour
+public class RocketBehaviour : MonoBehaviour
 {
     private Transform target;
     private float speed = 15.0f;
@@ -12,7 +12,6 @@ public class MissilesBehavior : MonoBehaviour
     private float rocketStrength = 15.0f;
     private float aliveTimer = 5.0f;
 
-    // Update is called once per frame
     void Update()
     {
         if (homing && target != null)
@@ -22,9 +21,9 @@ public class MissilesBehavior : MonoBehaviour
             transform.LookAt(target);
         }
     }
-    public void Fire(Transform newTarget)
+    public void Fire(Transform Enemy)
     {
-        target = newTarget;
+        target = Enemy;
         homing = true;
         Destroy(gameObject, aliveTimer);
     }

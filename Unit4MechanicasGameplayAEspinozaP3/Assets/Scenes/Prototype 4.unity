@@ -269,7 +269,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ca02071daf9e50643b2cc6e90686a116, type: 2}
+  - {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -327,11 +327,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hangTime: 0
-  smashSpeed: 0
-  explosionForce: 0
-  explosionRadius: 0
+  smashSpeed: 10
+  explosionForce: 10
+  explosionRadius: 10
   currentPowerUp: 0
-  rocketPrefab: {fileID: 0}
+  rocketPrefab: {fileID: 1230611209872904383, guid: 7dea415bf56853240b6f00296f53ed4f, type: 3}
   powerupIndicator: {fileID: 789466489}
   speed: 1
   hasPowerup: 0
@@ -651,7 +651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a88bf19ff1863499aa2d5733fbefdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 50
+  rotationSpeed: 75
 --- !u!1001 &1728410970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -757,13 +757,13 @@ MonoBehaviour:
   powerupPrefabs:
   - {fileID: 1998618466221869993, guid: 473be7be9af5fdb4d8fbb896dc1f6eb0, type: 3}
   - {fileID: 1998618466221869993, guid: 398dc34c1cb32354cbbb874cb180bfd6, type: 3}
-  - {fileID: 7885928162252863633, guid: 775e6fb403c78a042b5583ceae4ce8f1, type: 3}
+  - {fileID: 1998618466221869993, guid: 483803de0c22156488ee2be02a7a38a1, type: 3}
   enemyPrefab:
   - {fileID: 3315216540157430707, guid: 6ce3e969ed6c73e4e9cd780762546909, type: 3}
   - {fileID: 3315216540157430707, guid: e7f47a7d7d7d4df41b2c780f4ef139e8, type: 3}
   enemyCount: 0
   waveNumber: 1
-  powerupPrefab: {fileID: 1998618466221869993, guid: 398dc34c1cb32354cbbb874cb180bfd6, type: 3}
+  powerupPrefab: {fileID: 1998618466221869993, guid: 473be7be9af5fdb4d8fbb896dc1f6eb0, type: 3}
 --- !u!4 &2145462405
 Transform:
   m_ObjectHideFlags: 0
